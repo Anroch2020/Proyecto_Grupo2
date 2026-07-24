@@ -11,7 +11,7 @@ Este proyecto es parte del curso de Implantación de Tecnología de Ingeniería 
 Antes de comenzar, asegúrate de tener instalado lo siguiente:
 
 - [Visual Studio 2022](https://visualstudio.microsoft.com/es/downloads/) (Community, Professional o Enterprise)
-- [.NET Framework](https://dotnet.microsoft.com/es-es/download) o [.NET 6+](https://dotnet.microsoft.com/es-es/download) (según el proyecto)
+- [.NET Framework 4.8.1](https://dotnet.microsoft.com/es-es/download)
 - [Git](https://git-scm.com/)
 
 ## 📥 Configuración Inicial
@@ -99,7 +99,7 @@ O usa el **Administrador de Paquetes NuGet**: `Tools → NuGet Package Manager �
 
 ## 📝 Licencia
 
-Este proyecto es parte del curso de Ingeniería en Sistemas de UCENM.
+Este proyecto es parte del curso de Ingeniería en Sistemas de UCENM bajo la licencia MIT
 
 ---
 
