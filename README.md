@@ -91,7 +91,7 @@ El **Krypton Standard Toolkit** es un conjunto completo de controles para Window
 - Mejora significativa de la experiencia visual de la aplicación
 - Documentación completa y ejemplos
 
-Para más información, visita: [Krypton Toolkit](https://www.componentfactory.com/krypton)
+Para más información, visita: [Krypton Toolkit](https://github.com/Krypton-Suite/Standard-Toolkit)
 
 ## 🔧 Configuración Adicional
 
@@ -116,7 +116,7 @@ O usa el **Administrador de Paquetes NuGet**: `Tools → NuGet Package Manager �
 - [Documentación de C#](https://docs.microsoft.com/es-es/dotnet/csharp/)
 - [Guía de Visual Studio](https://docs.microsoft.com/es-es/visualstudio/)
 - [NuGet Package Manager](https://www.nuget.org/)
-- [Krypton Toolkit Documentación](https://www.componentfactory.com/krypton)
+- [Krypton Toolkit Documentación](https://github.com/Krypton-Suite/Standard-Toolkit/blob/master/Documents/palette-mechanics-intro.md)
 
 ## 👥 Integrantes del Grupo
 
