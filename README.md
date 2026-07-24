@@ -4,14 +4,14 @@ UCENM - Ingeniería En Sistemas - Implantación De Tecnología - Grupo 2
 
 ## 📋 Descripción
 
-Este proyecto es parte del curso de Implantación de Tecnología de Ingeniería en Sistemas en UCENM. Desarrollado en C# con Visual Studio.
+Este proyecto es parte del curso de Implantación de Tecnología de Ingeniería en Sistemas en UCENM. Desarrollado en C# con Visual Studio, utiliza el **Krypton Standard Toolkit** para crear interfaces de usuario modernas y profesionales.
 
 ## 🛠️ Requisitos Previos
 
 Antes de comenzar, asegúrate de tener instalado lo siguiente:
 
 - [Visual Studio 2022](https://visualstudio.microsoft.com/es/downloads/) (Community, Professional o Enterprise)
-- [.NET Framework 4.8.1](https://dotnet.microsoft.com/es-es/download)
+- [.NET Framework 4.8.1](https://dotnet.microsoft.com/es-es/download) o superior
 - [Git](https://git-scm.com/)
 
 ## 📥 Configuración Inicial
@@ -59,15 +59,39 @@ Update-Package -Reinstall
 
 ```
 Proyecto_Grupo2/
-├── [Nombre del Proyecto].sln
-├── [Nombre del Proyecto]/
+├── Proyecto_Grupo2.sln
+├── Proyecto_Grupo2/
 │   ├── Properties/
 │   ├── bin/
 │   ├── obj/
+│   ├── Clases/
+│   ├── Vistas/
+│   ├── Resources/
+│   ├── Libs/
 │   ├── [Archivos .cs]
-│   └── App.config (si aplica)
+│   └── App.config
 └── README.md
 ```
+
+## 📦 Dependencias NuGet
+
+El proyecto utiliza las siguientes dependencias NuGet:
+
+| Paquete | Versión | Descripción |
+|---------|---------|-------------|
+| **Krypton.Navigator.LTS** | 85.26.6.173 | Toolkit para crear interfaces de usuario profesionales con controles WinForms mejorados |
+
+### Krypton Standard Toolkit
+
+El **Krypton Standard Toolkit** es un conjunto completo de controles para Windows Forms que proporciona:
+
+- Controles UI modernos y personalizables
+- Temas predefinidos y personalizables
+- Estilos profesionales para botones, menús, barras de herramientas y navegadores
+- Mejora significativa de la experiencia visual de la aplicación
+- Documentación completa y ejemplos
+
+Para más información, visita: [Krypton Toolkit](https://www.componentfactory.com/krypton)
 
 ## 🔧 Configuración Adicional
 
@@ -78,9 +102,9 @@ Proyecto_Grupo2/
 
 Selecciona la configuración deseada en la barra de herramientas de Visual Studio.
 
-### Instalar Paquetes NuGet
+### Instalar Paquetes NuGet Adicionales
 
-Si necesitas agregar paquetes:
+Si necesitas agregar más paquetes:
 
 1. **Consola del Administrador de Paquetes**: `Tools → NuGet Package Manager → Package Manager Console`
 2. Ejecuta: `Install-Package NombreDelPaquete`
@@ -92,6 +116,7 @@ O usa el **Administrador de Paquetes NuGet**: `Tools → NuGet Package Manager �
 - [Documentación de C#](https://docs.microsoft.com/es-es/dotnet/csharp/)
 - [Guía de Visual Studio](https://docs.microsoft.com/es-es/visualstudio/)
 - [NuGet Package Manager](https://www.nuget.org/)
+- [Krypton Toolkit Documentación](https://www.componentfactory.com/krypton)
 
 ## 👥 Integrantes del Grupo
 
@@ -99,8 +124,8 @@ O usa el **Administrador de Paquetes NuGet**: `Tools → NuGet Package Manager �
 
 ## 📝 Licencia
 
-Este proyecto es parte del curso de Ingeniería en Sistemas de UCENM bajo la licencia MIT
+Este proyecto es parte del curso de Ingeniería en Sistemas de UCENM.
 
 ---
 
-**Última actualización:** 2026-07-23
+**Última actualización:** 2026-07-24
