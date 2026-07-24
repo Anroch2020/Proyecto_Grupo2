@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Proyecto_Grupo2.Vistas.Controls
 {
-    public partial class verHistorialControl : UserControl
+    public partial class BuscarCitaControl : UserControl
     {
-        public verHistorialControl()
+        public BuscarCitaControl()
         {
             InitializeComponent();
         }

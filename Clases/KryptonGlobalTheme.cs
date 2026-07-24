@@ -1,10 +1,5 @@
 ﻿using Krypton.Toolkit;
-using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Proyecto_Grupo2.Clases
 {
@@ -116,7 +111,7 @@ namespace Proyecto_Grupo2.Clases
         }
 
         /// <summary>Call once at startup to trigger the static constructor above.</summary>
-        public static void EnsureInitialized() { }
+        public static void ensureInitialized() { }
     }
 }
 

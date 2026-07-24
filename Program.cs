@@ -1,9 +1,7 @@
 ﻿using Proyecto_Grupo2.Clases;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using Proyecto_Grupo2.Vistas;
 
 namespace Proyecto_Grupo2
 {
@@ -17,7 +15,7 @@ namespace Proyecto_Grupo2
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            AppTheme.EnsureInitialized();
+            AppTheme.ensureInitialized();
             Application.Run(new MedicosForm());
         }
     }

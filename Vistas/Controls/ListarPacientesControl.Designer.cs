@@ -1,6 +1,6 @@
-﻿namespace Proyecto_Grupo2.Vistas.UserControls
+﻿namespace Proyecto_Grupo2.Vistas.Controls
 {
-    partial class buscarCitaControl
+    partial class ListarPacientesControl
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,28 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(buscarCitaControl));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ListarPacientesControl));
             this.kryptonTableLayoutPanel1 = new Krypton.Toolkit.KryptonTableLayoutPanel();
             this.kryptonTableLayoutPanel2 = new Krypton.Toolkit.KryptonTableLayoutPanel();
             this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
+            this.kryptonDataGridView1 = new Krypton.Toolkit.KryptonDataGridView();
             this.kryptonTableLayoutPanel1.SuspendLayout();
             this.kryptonTableLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonDataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // kryptonTableLayoutPanel1
             // 
+            this.kryptonTableLayoutPanel1.AutoSize = true;
+            this.kryptonTableLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.kryptonTableLayoutPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("kryptonTableLayoutPanel1.BackgroundImage")));
             this.kryptonTableLayoutPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.kryptonTableLayoutPanel1.ColumnCount = 1;
             this.kryptonTableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.kryptonTableLayoutPanel1.Controls.Add(this.kryptonTableLayoutPanel2, 0, 0);
+            this.kryptonTableLayoutPanel1.Controls.Add(this.kryptonDataGridView1, 0, 1);
             this.kryptonTableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonTableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.kryptonTableLayoutPanel1.Name = "kryptonTableLayoutPanel1";
             this.kryptonTableLayoutPanel1.RowCount = 2;
             this.kryptonTableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this.kryptonTableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85F));
-            this.kryptonTableLayoutPanel1.Size = new System.Drawing.Size(905, 582);
+            this.kryptonTableLayoutPanel1.Size = new System.Drawing.Size(809, 495);
             this.kryptonTableLayoutPanel1.TabIndex = 0;
             // 
             // kryptonTableLayoutPanel2
@@ -66,40 +71,53 @@
             this.kryptonTableLayoutPanel2.Name = "kryptonTableLayoutPanel2";
             this.kryptonTableLayoutPanel2.RowCount = 1;
             this.kryptonTableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.kryptonTableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 81F));
-            this.kryptonTableLayoutPanel2.Size = new System.Drawing.Size(899, 81);
+            this.kryptonTableLayoutPanel2.Size = new System.Drawing.Size(803, 68);
             this.kryptonTableLayoutPanel2.TabIndex = 0;
             // 
             // kryptonLabel1
             // 
             this.kryptonLabel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonLabel1.LabelStyle = Krypton.Toolkit.LabelStyle.TitlePanel;
-            this.kryptonLabel1.Location = new System.Drawing.Point(302, 3);
+            this.kryptonLabel1.Location = new System.Drawing.Point(270, 3);
             this.kryptonLabel1.Name = "kryptonLabel1";
-            this.kryptonLabel1.Size = new System.Drawing.Size(293, 75);
+            this.kryptonLabel1.Size = new System.Drawing.Size(261, 62);
             this.kryptonLabel1.StateCommon.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Center;
             this.kryptonLabel1.StateCommon.ShortText.TextV = Krypton.Toolkit.PaletteRelativeAlign.Center;
             this.kryptonLabel1.TabIndex = 0;
-            this.kryptonLabel1.Values.Text = "Busqueda Citas";
+            this.kryptonLabel1.Values.Text = "Listar Pacientes";
             // 
-            // buscarCitaControl
+            // kryptonDataGridView1
+            // 
+            this.kryptonDataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.kryptonDataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.kryptonDataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonDataGridView1.Location = new System.Drawing.Point(3, 77);
+            this.kryptonDataGridView1.Name = "kryptonDataGridView1";
+            this.kryptonDataGridView1.RowHeadersWidth = 51;
+            this.kryptonDataGridView1.RowTemplate.Height = 24;
+            this.kryptonDataGridView1.Size = new System.Drawing.Size(803, 415);
+            this.kryptonDataGridView1.TabIndex = 2;
+            // 
+            // ListarPacientesControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.kryptonTableLayoutPanel1);
-            this.Name = "buscarCitaControl";
-            this.Size = new System.Drawing.Size(905, 582);
+            this.Name = "ListarPacientesControl";
+            this.Size = new System.Drawing.Size(809, 495);
             this.kryptonTableLayoutPanel1.ResumeLayout(false);
             this.kryptonTableLayoutPanel2.ResumeLayout(false);
             this.kryptonTableLayoutPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonDataGridView1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-
         private Krypton.Toolkit.KryptonTableLayoutPanel kryptonTableLayoutPanel1;
         private Krypton.Toolkit.KryptonTableLayoutPanel kryptonTableLayoutPanel2;
         private Krypton.Toolkit.KryptonLabel kryptonLabel1;
+        private Krypton.Toolkit.KryptonDataGridView kryptonDataGridView1;
     }
 }

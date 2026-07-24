@@ -1,4 +1,4 @@
-﻿namespace Proyecto_Grupo2
+﻿namespace Proyecto_Grupo2.Vistas
 {
     partial class MedicosForm
     {

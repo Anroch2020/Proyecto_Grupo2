@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Proyecto_Grupo2.Vistas.UserControls
+namespace Proyecto_Grupo2.Vistas.Controls
 {
-    public partial class buscarPacienteControl : UserControl
+    public partial class VerCitasControl : UserControl
     {
-        public buscarPacienteControl()
+        public VerCitasControl()
         {
             InitializeComponent();
         }

@@ -1,7 +1,7 @@
 ﻿using Krypton.Toolkit;
-namespace Proyecto_Grupo2.Vistas.UserControls
+namespace Proyecto_Grupo2.Vistas.Controls
 {
-    partial class nuevoPacienteControl
+    partial class NuevoPacienteControl
     {
         /// <summary> 
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace Proyecto_Grupo2.Vistas.UserControls
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(nuevoPacienteControl));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NuevoPacienteControl));
             this.kryptonTableLayoutPanel1 = new Krypton.Toolkit.KryptonTableLayoutPanel();
             this.kryptonTableLayoutPanel2 = new Krypton.Toolkit.KryptonTableLayoutPanel();
             this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
@@ -666,13 +666,13 @@ namespace Proyecto_Grupo2.Vistas.UserControls
             this.kryptonButton2.Values.Image = global::Proyecto_Grupo2.Properties.Resources.clean_24dp;
             this.kryptonButton2.Values.Text = "Limpiar";
             // 
-            // nuevoPacienteControl
+            // NuevoPacienteControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.Controls.Add(this.kryptonTableLayoutPanel1);
-            this.Name = "nuevoPacienteControl";
+            this.Name = "NuevoPacienteControl";
             this.Size = new System.Drawing.Size(838, 500);
             this.kryptonTableLayoutPanel1.ResumeLayout(false);
             this.kryptonTableLayoutPanel1.PerformLayout();

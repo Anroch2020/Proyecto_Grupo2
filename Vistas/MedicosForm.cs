@@ -1,22 +1,14 @@
 ﻿using Krypton.Toolkit;
 using Proyecto_Grupo2.Clases;
 using Proyecto_Grupo2.Vistas.Controls;
-using Proyecto_Grupo2.Vistas.UserControls;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Proyecto_Grupo2
+namespace Proyecto_Grupo2.Vistas
 {
     public partial class MedicosForm : KryptonForm
     {
-        private UserControl currentControl;
+        private UserControl _currentControl;
         public MedicosForm()
         {
             InitializeComponent();
@@ -50,7 +42,7 @@ namespace Proyecto_Grupo2
 
         private void btnListaPacientes_Click(object sender, EventArgs e)
         {
-            LoadControl(new listarPacientesControl());
+            loadControl(new ListarPacientesControl());
         }
 
         private void flowLayoutPanel2_Resize(object sender, EventArgs e)
@@ -71,50 +63,50 @@ namespace Proyecto_Grupo2
 
         private void btnCrearPaciente_Click(object sender, EventArgs e)
         {
-            LoadControl(new nuevoPacienteControl());
+            loadControl(new NuevoPacienteControl());
         }
-        private void LoadControl(UserControl newControl)
+        private void loadControl(UserControl newControl)
         {
             mainPanel.Controls.Clear();
-            currentControl?.Dispose();
+            _currentControl?.Dispose();
             newControl.Dock = DockStyle.Fill;
             mainPanel.Controls.Add(newControl);
-            currentControl = newControl;
+            _currentControl = newControl;
         }
 
         private void btnBuscarPaciente_Click(object sender, EventArgs e)
         {
-            LoadControl(new buscarPacienteControl());
+            loadControl(new BuscarPacienteControl());
         }
 
         private void kryptonButton1_Click(object sender, EventArgs e)
         {
-            LoadControl(new nuevaCitaControl());
+            loadControl(new NuevaCitaControl());
         }
 
         private void kryptonButton2_Click(object sender, EventArgs e)
         {
-            LoadControl(new buscarCitaControl());
+            loadControl(new BuscarCitaControl());
         }
 
         private void kryptonButton3_Click(object sender, EventArgs e)
         {
-            LoadControl(new verCitasControl());
+            loadControl(new VerCitasControl());
         }
 
         private void kryptonButton6_Click(object sender, EventArgs e)
         {
-            LoadControl(new crearFacturaControl());
+            loadControl(new CrearFacturaControl());
         }
 
         private void kryptonButton5_Click(object sender, EventArgs e)
         {
-            LoadControl(new verFacturasControl());
+            loadControl(new VerFacturasControl());
         }
 
         private void kryptonButton4_Click(object sender, EventArgs e)
         {
-            LoadControl(new verHistorialControl());
+            loadControl(new VerHistorialControl());
         }
     }
 }
