@@ -28,10 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(buscarCitaControl));
             this.kryptonTableLayoutPanel1 = new Krypton.Toolkit.KryptonTableLayoutPanel();
-            this.kryptonManager1 = new Krypton.Toolkit.KryptonManager(this.components);
             this.kryptonTableLayoutPanel2 = new Krypton.Toolkit.KryptonTableLayoutPanel();
             this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
             this.kryptonTableLayoutPanel1.SuspendLayout();
@@ -54,10 +52,6 @@
             this.kryptonTableLayoutPanel1.Size = new System.Drawing.Size(905, 582);
             this.kryptonTableLayoutPanel1.TabIndex = 0;
             // 
-            // kryptonManager1
-            // 
-            this.kryptonManager1.GlobalPaletteMode = Krypton.Toolkit.PaletteMode.Microsoft365White;
-            // 
             // kryptonTableLayoutPanel2
             // 
             this.kryptonTableLayoutPanel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("kryptonTableLayoutPanel2.BackgroundImage")));
@@ -72,7 +66,7 @@
             this.kryptonTableLayoutPanel2.Name = "kryptonTableLayoutPanel2";
             this.kryptonTableLayoutPanel2.RowCount = 1;
             this.kryptonTableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.kryptonTableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.kryptonTableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 81F));
             this.kryptonTableLayoutPanel2.Size = new System.Drawing.Size(899, 81);
             this.kryptonTableLayoutPanel2.TabIndex = 0;
             // 
@@ -88,12 +82,12 @@
             this.kryptonLabel1.TabIndex = 0;
             this.kryptonLabel1.Values.Text = "Busqueda Citas";
             // 
-            // buscarCitaForm
+            // buscarCitaControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.kryptonTableLayoutPanel1);
-            this.Name = "buscarCitaForm";
+            this.Name = "buscarCitaControl";
             this.Size = new System.Drawing.Size(905, 582);
             this.kryptonTableLayoutPanel1.ResumeLayout(false);
             this.kryptonTableLayoutPanel2.ResumeLayout(false);
@@ -107,6 +101,5 @@
         private Krypton.Toolkit.KryptonTableLayoutPanel kryptonTableLayoutPanel1;
         private Krypton.Toolkit.KryptonTableLayoutPanel kryptonTableLayoutPanel2;
         private Krypton.Toolkit.KryptonLabel kryptonLabel1;
-        private Krypton.Toolkit.KryptonManager kryptonManager1;
     }
 }

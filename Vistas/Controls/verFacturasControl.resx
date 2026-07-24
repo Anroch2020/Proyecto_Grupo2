@@ -121,7 +121,7 @@
   <data name="kryptonTableLayoutPanel1.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAyAAAAJLCAYAAAAfNPJFAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAS
-        cwAAEnMBjCK5BwAADCRJREFUeF7t16EBADAMgLD+/3Tr54dKJB8wCwAAEJk3AAAA/GJAAACAjAEBAAAy
+        cgAAEnIBXmVb4wAADCRJREFUeF7t16EBADAMgLD+/3Tr54dKJB8wCwAAEJk3AAAA/GJAAACAjAEBAAAy
         BgQAAMgYEAAAIGNAAACAjAEBAAAyBgQAAMgYEAAAIGNAAACAjAEBAAAyBgQAAMgYEAAAIGNAAACAjAEB
         AAAyBgQAAMgYEAAAIGNAAACAjAEBAAAyBgQAAMgYEAAAIGNAAACAjAEBAAAyBgQAAMgYEAAAIGNAAACA
         jAEBAAAyBgQAAMgYEAAAIGNAAACAjAEBAAAyBgQAAMgYEAAAIGNAAACAjAEBAAAyBgQAAMgYEAAAIGNA
@@ -179,7 +179,7 @@
   <data name="kryptonTableLayoutPanel2.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAxoAAABSCAYAAADTo6LOAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAS
-        cwAAEnMBjCK5BwAAAe9JREFUeF7t2zEKAzEQBEF9ft99QoGSS9VhFRhb/kEz7JqZ7zjf9+Pt7e3t7e3t
+        cgAAEnIBXmVb4wAAAe9JREFUeF7t2zEKAzEQBEF9ft99QoGSS9VhFRhb/kEz7JqZ7zjf9+Pt7e3t7e3t
         7e3t7f3yXvcHAABARWgAAAC59f8DAADglUUDAADICQ0AACAnNAAAgJwbDQAAIGfRAAAAckIDAADICQ0A
         ACDnRgMAAMhZNAAAgJzQAAAAckIDAADIudEAAAByFg0AACAnNAAAgJzQAAAAcm40AACAnEUDAADICQ0A
         ACAnNAAAgJwbDQAAIGfRAAAAckIDAADICQ0AACDnRgMAAMhZNAAAgJzQAAAAckIDAADIudEAAAByFg0A
@@ -190,7 +190,4 @@
         gJzQAAAAckIDAADICQ0AACAnNAAAgJzQAAAAchvm6+aC6wRJPwAAAABJRU5ErkJggg==
 </value>
   </data>
-  <metadata name="kryptonManager1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
 </root>

@@ -28,12 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(verFacturasControl));
             this.kryptonTableLayoutPanel1 = new Krypton.Toolkit.KryptonTableLayoutPanel();
             this.kryptonTableLayoutPanel2 = new Krypton.Toolkit.KryptonTableLayoutPanel();
             this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
-            this.kryptonManager1 = new Krypton.Toolkit.KryptonManager(this.components);
             this.kryptonTableLayoutPanel1.SuspendLayout();
             this.kryptonTableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
@@ -88,10 +86,6 @@
             this.kryptonLabel1.TabIndex = 0;
             this.kryptonLabel1.Values.Text = "Facturas";
             // 
-            // kryptonManager1
-            // 
-            this.kryptonManager1.GlobalPaletteMode = Krypton.Toolkit.PaletteMode.Microsoft365White;
-            // 
             // verFacturasControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -113,6 +107,5 @@
         private Krypton.Toolkit.KryptonTableLayoutPanel kryptonTableLayoutPanel1;
         private Krypton.Toolkit.KryptonTableLayoutPanel kryptonTableLayoutPanel2;
         private Krypton.Toolkit.KryptonLabel kryptonLabel1;
-        private Krypton.Toolkit.KryptonManager kryptonManager1;
     }
 }

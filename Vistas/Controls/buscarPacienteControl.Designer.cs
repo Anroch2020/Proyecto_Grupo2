@@ -28,19 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(buscarPacienteControl));
-            this.kryptonManager1 = new Krypton.Toolkit.KryptonManager(this.components);
             this.kryptonTableLayoutPanel1 = new Krypton.Toolkit.KryptonTableLayoutPanel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
             this.kryptonTableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // kryptonManager1
-            // 
-            this.kryptonManager1.GlobalPaletteMode = Krypton.Toolkit.PaletteMode.Microsoft365White;
             // 
             // kryptonTableLayoutPanel1
             // 
@@ -87,12 +81,12 @@
             this.kryptonLabel1.TabIndex = 0;
             this.kryptonLabel1.Values.Text = "Resultado Busqueda";
             // 
-            // buscarPacienteForm
+            // buscarPacienteControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.kryptonTableLayoutPanel1);
-            this.Name = "buscarPacienteForm";
+            this.Name = "buscarPacienteControl";
             this.Size = new System.Drawing.Size(778, 575);
             this.kryptonTableLayoutPanel1.ResumeLayout(false);
             this.kryptonTableLayoutPanel1.PerformLayout();
@@ -103,8 +97,6 @@
         }
 
         #endregion
-
-        private Krypton.Toolkit.KryptonManager kryptonManager1;
         private Krypton.Toolkit.KryptonTableLayoutPanel kryptonTableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private Krypton.Toolkit.KryptonLabel kryptonLabel1;

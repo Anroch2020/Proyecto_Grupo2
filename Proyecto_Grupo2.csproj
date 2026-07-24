@@ -137,6 +137,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\Controls\buscarCitaControl.resx">
       <DependentUpon>buscarCitaControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\Controls\buscarPacienteControl.resx">
       <DependentUpon>buscarPacienteControl.cs</DependentUpon>
