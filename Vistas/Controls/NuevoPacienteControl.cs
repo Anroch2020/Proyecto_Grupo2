@@ -10,14 +10,9 @@ namespace Proyecto_Grupo2.Vistas.Controls
         {
             InitializeComponent();
             kryptonButton1.PaletteMode = PaletteMode.Custom;
-            kryptonButton1.Palette = AppTheme.AccentButtonPalette;
+            kryptonButton1.Palette = AppTheme.PrimaryButtonStylePalette;
             kryptonButton2.PaletteMode = PaletteMode.Custom;
-            kryptonButton2.Palette = AppTheme.AccentButtonPalette;
-        }
-
-        private void kryptonControllersStyleLight_PalettePaint(object sender, Krypton.Toolkit.PaletteLayoutEventArgs e)
-        {
-               
+            kryptonButton2.Palette = AppTheme.SecondaryButtonStylePalette;
         }
     }
 }

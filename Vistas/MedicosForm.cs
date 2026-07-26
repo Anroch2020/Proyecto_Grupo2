@@ -13,23 +13,23 @@ namespace Proyecto_Grupo2.Vistas
         {
             InitializeComponent();
             btnCrearPaciente.PaletteMode = PaletteMode.Custom;
-            btnCrearPaciente.Palette = AppTheme.AccentButtonPalette;
+            btnCrearPaciente.Palette = AppTheme.PrimaryButtonStylePalette;
             btnListaPacientes.PaletteMode = PaletteMode.Custom;
-            btnListaPacientes.Palette = AppTheme.AccentButtonPalette;
+            btnListaPacientes.Palette = AppTheme.PrimaryButtonStylePalette;
             btnBuscarPaciente.PaletteMode = PaletteMode.Custom;
-            btnBuscarPaciente.Palette = AppTheme.AccentButtonPalette;
+            btnBuscarPaciente.Palette = AppTheme.PrimaryButtonStylePalette;
             kryptonButton1.PaletteMode = PaletteMode.Custom;
-            kryptonButton1.Palette = AppTheme.AccentButtonPalette;
+            kryptonButton1.Palette = AppTheme.PrimaryButtonStylePalette;
             kryptonButton2.PaletteMode = PaletteMode.Custom;
-            kryptonButton2.Palette = AppTheme.AccentButtonPalette;
+            kryptonButton2.Palette = AppTheme.PrimaryButtonStylePalette;
             kryptonButton3.PaletteMode = PaletteMode.Custom;
-            kryptonButton3.Palette = AppTheme.AccentButtonPalette;
+            kryptonButton3.Palette = AppTheme.PrimaryButtonStylePalette;
             kryptonButton6.PaletteMode = PaletteMode.Custom;
-            kryptonButton6.Palette = AppTheme.AccentButtonPalette;
+            kryptonButton6.Palette = AppTheme.PrimaryButtonStylePalette;
             kryptonButton5.PaletteMode = PaletteMode.Custom;
-            kryptonButton5.Palette = AppTheme.AccentButtonPalette;
+            kryptonButton5.Palette = AppTheme.PrimaryButtonStylePalette;
             kryptonButton4.PaletteMode = PaletteMode.Custom;
-            kryptonButton4.Palette = AppTheme.AccentButtonPalette;
+            kryptonButton4.Palette = AppTheme.PrimaryButtonStylePalette;
         }
 
         private void flowLayoutPanel1_Resize(object sender, EventArgs e)
