@@ -135,8 +135,6 @@ namespace Proyecto_Grupo2.Vistas.Controls
             // 
             this.kryptonTableLayoutPanel2.AutoSize = true;
             this.kryptonTableLayoutPanel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.kryptonTableLayoutPanel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("kryptonTableLayoutPanel2.BackgroundImage")));
-            this.kryptonTableLayoutPanel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.kryptonTableLayoutPanel2.ColumnCount = 3;
             this.kryptonTableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.kryptonTableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
@@ -170,8 +168,6 @@ namespace Proyecto_Grupo2.Vistas.Controls
             // 
             this.kryptonTableLayoutPanel3.AutoSize = true;
             this.kryptonTableLayoutPanel3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.kryptonTableLayoutPanel3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("kryptonTableLayoutPanel3.BackgroundImage")));
-            this.kryptonTableLayoutPanel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.kryptonTableLayoutPanel3.ColumnCount = 2;
             this.kryptonTableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.kryptonTableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75F));
@@ -210,8 +206,6 @@ namespace Proyecto_Grupo2.Vistas.Controls
             // 
             // kryptonTableLayoutPanel9
             // 
-            this.kryptonTableLayoutPanel9.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("kryptonTableLayoutPanel9.BackgroundImage")));
-            this.kryptonTableLayoutPanel9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.kryptonTableLayoutPanel9.ColumnCount = 2;
             this.kryptonTableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.kryptonTableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));

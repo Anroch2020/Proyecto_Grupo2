@@ -38,8 +38,6 @@
             // 
             // kryptonTableLayoutPanel1
             // 
-            this.kryptonTableLayoutPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("kryptonTableLayoutPanel1.BackgroundImage")));
-            this.kryptonTableLayoutPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.kryptonTableLayoutPanel1.ColumnCount = 1;
             this.kryptonTableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.kryptonTableLayoutPanel1.Controls.Add(this.tableLayoutPanel1, 0, 0);
