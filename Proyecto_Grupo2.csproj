@@ -36,6 +36,7 @@
     <Reference Include="System">
       <HintPath>..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8.1\System.dll</HintPath>
     </Reference>
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
     <Reference Include="System.Numerics" />
@@ -56,6 +57,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Vistas\Biometrics\CaptureForm.cs" />
+    <Compile Include="Vistas\Biometrics\CaptureForm.Designer.cs" />
+    <Compile Include="Vistas\Biometrics\EnrollmentForm.cs" />
+    <Compile Include="Vistas\Biometrics\MainForm.cs" />
+    <Compile Include="Vistas\Biometrics\MainForm.Designer.cs" />
+    <Compile Include="Vistas\Biometrics\VerificationForm.cs" />
     <Compile Include="Vistas\Controls\VerFacturasControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -67,6 +74,12 @@
     </Compile>
     <Compile Include="Vistas\Controls\VerHistorialControl.Designer.cs">
       <DependentUpon>VerHistorialControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
     </Compile>
     <Compile Include="Vistas\MedicosForm.cs">
       <SubType>Form</SubType>
@@ -118,6 +131,14 @@
     <Compile Include="Vistas\Controls\VerCitasControl.Designer.cs">
       <DependentUpon>VerCitasControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Vistas\Register.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\Register.Designer.cs">
+      <DependentUpon>Register.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Vistas\Biometrics\CaptureForm.resx" />
+    <EmbeddedResource Include="Vistas\Biometrics\MainForm.resx" />
     <EmbeddedResource Include="Vistas\Controls\CrearFacturaControl.resx">
       <DependentUpon>CrearFacturaControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -154,6 +175,7 @@
     <EmbeddedResource Include="Vistas\Controls\VerCitasControl.resx">
       <DependentUpon>VerCitasControl.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="App.Local.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -174,19 +196,54 @@
     <PackageReference Include="Krypton.Toolkit.LTS">
       <Version>85.26.6.173</Version>
     </PackageReference>
+    <PackageReference Include="System.Data.SqlClient">
+      <Version>4.9.1</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Libs\DPFPCtlXTypeLibNET.dll" />
-    <Content Include="Libs\DPFPCtlXWrapperNET.dll" />
-    <Content Include="Libs\DPFPDevNET.dll" />
-    <Content Include="Libs\DPFPEngNET.dll" />
-    <Content Include="Libs\DPFPGuiNET.dll" />
-    <Content Include="Libs\DPFPShrNET.dll" />
-    <Content Include="Libs\DPFPShrXTypeLibNET.dll" />
-    <Content Include="Libs\DPFPVerNET.dll" />
+    <Reference Include="DPFPCtlXTypeLibNET">
+      <HintPath>Libs\DPFPCtlXTypeLibNET.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+    <Reference Include="DPFPCtlXWrapperNET">
+      <HintPath>Libs\DPFPCtlXWrapperNET.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+    <Reference Include="DPFPDevNET">
+      <HintPath>Libs\DPFPDevNET.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+    <Reference Include="DPFPEngNET">
+      <HintPath>Libs\DPFPEngNET.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+    <Reference Include="DPFPGuiNET">
+      <HintPath>Libs\DPFPGuiNET.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+    <Reference Include="DPFPShrNET">
+      <HintPath>Libs\DPFPShrNET.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+    <Reference Include="DPFPShrXTypeLibNET">
+      <HintPath>Libs\DPFPShrXTypeLibNET.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+    <Reference Include="DPFPVerNET">
+      <HintPath>Libs\DPFPVerNET.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Modelos\" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="App.Local.config.example" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <None Include="App.Local.config" Condition="Exists('App.Local.config')">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 </Project>
