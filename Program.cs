@@ -19,7 +19,7 @@ namespace Proyecto_Grupo2
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             AppTheme.ensureInitialized();
-            Application.Run(new MedicosForm());
+            Application.Run(new LoginForm());
         }
     }
     internal static class ConnectionStringLoader

@@ -2,9 +2,9 @@
 
 namespace Proyecto_Grupo2.Vistas
 {
-    public partial class Login : Form
+    public partial class FarmaciaForm : Form
     {
-        public Login()
+        public FarmaciaForm()
         {
             InitializeComponent();
         }

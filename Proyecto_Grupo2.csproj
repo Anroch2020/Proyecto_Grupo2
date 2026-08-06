@@ -52,10 +52,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Clases\KryptonGlobalTheme.cs" />
+    <Compile Include="Clases\AuthService.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\AdministradorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\AdministradorForm.Designer.cs">
+      <DependentUpon>AdministradorForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Vistas\Biometrics\CaptureForm.cs" />
     <Compile Include="Vistas\Biometrics\CaptureForm.Designer.cs" />
@@ -75,17 +82,29 @@
     <Compile Include="Vistas\Controls\VerHistorialControl.Designer.cs">
       <DependentUpon>VerHistorialControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Vistas\Login.cs">
+    <Compile Include="Vistas\FarmaciaForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Vistas\Login.Designer.cs">
-      <DependentUpon>Login.cs</DependentUpon>
+    <Compile Include="Vistas\FarmaciaForm.Designer.cs">
+      <DependentUpon>FarmaciaForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Vistas\MedicosForm.cs">
+    <Compile Include="Vistas\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Vistas\MedicosForm.Designer.cs">
-      <DependentUpon>MedicosForm.cs</DependentUpon>
+    <Compile Include="Vistas\LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\MedicoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\MedicoForm.Designer.cs">
+      <DependentUpon>MedicoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\RecepcionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\RecepcionForm.Designer.cs">
+      <DependentUpon>RecepcionForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -131,11 +150,11 @@
     <Compile Include="Vistas\Controls\VerCitasControl.Designer.cs">
       <DependentUpon>VerCitasControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Vistas\Register.cs">
+    <Compile Include="Vistas\RegisterForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Vistas\Register.Designer.cs">
-      <DependentUpon>Register.cs</DependentUpon>
+    <Compile Include="Vistas\RegisterForm.Designer.cs">
+      <DependentUpon>RegisterForm.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Vistas\Biometrics\CaptureForm.resx" />
     <EmbeddedResource Include="Vistas\Biometrics\MainForm.resx" />
@@ -148,8 +167,11 @@
     <EmbeddedResource Include="Vistas\Controls\VerHistorialControl.resx">
       <DependentUpon>VerHistorialControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Vistas\MedicosForm.resx">
-      <DependentUpon>MedicosForm.cs</DependentUpon>
+    <EmbeddedResource Include="Vistas\LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\RecepcionForm.resx">
+      <DependentUpon>RecepcionForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <SubType>Designer</SubType>
@@ -174,6 +196,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\Controls\VerCitasControl.resx">
       <DependentUpon>VerCitasControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\RegisterForm.resx">
+      <DependentUpon>RegisterForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.Local.config" />
     <None Include="Properties\Settings.settings">
@@ -239,6 +264,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.Local.config.example" />
+    <Content Include="Database\database.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

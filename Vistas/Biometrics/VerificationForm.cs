@@ -13,6 +13,7 @@ namespace Enrollment
 	*/
 	public class VerificationForm : CaptureForm
 	{
+		public event Action<bool> VerificationCompleted;
 
 		public void Verify(DPFP.Template template)
 		{
@@ -44,7 +45,7 @@ namespace Enrollment
 				Verificator.Verify(features, Template, ref result);
 				UpdateStatus(result.FARAchieved);
 				if (result.Verified)
-					MakeReport("The fingerprint was VERIFIED.");
+				{ MakeReport("The fingerprint was VERIFIED."); BeginInvoke(new Action(() => { VerificationCompleted?.Invoke(true); Close(); })); }
 				else
 					MakeReport("The fingerprint was NOT VERIFIED.");
 			}

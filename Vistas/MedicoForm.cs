@@ -2,9 +2,9 @@
 
 namespace Proyecto_Grupo2.Vistas
 {
-    public partial class Register : Form
+    public partial class MedicoForm : Form
     {
-        public Register()
+        public MedicoForm()
         {
             InitializeComponent();
         }

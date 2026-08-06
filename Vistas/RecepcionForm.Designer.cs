@@ -1,6 +1,6 @@
 ﻿namespace Proyecto_Grupo2.Vistas
 {
-    partial class MedicosForm
+    partial class RecepcionForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MedicosForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RecepcionForm));
             this.kryptonFormsStyle = new Krypton.Toolkit.KryptonCustomPaletteBase(this.components);
             this.MainTableLayoutPanel = new Krypton.Toolkit.KryptonTableLayoutPanel();
             this.SidebarTableLayoutPanel = new Krypton.Toolkit.KryptonTableLayoutPanel();
@@ -325,7 +325,7 @@
             this.mainPanel.StateCommon.ImageStyle = Krypton.Toolkit.PaletteImageStyle.Stretch;
             this.mainPanel.TabIndex = 2;
             // 
-            // MedicosForm
+            // RecepcionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -333,7 +333,7 @@
             this.Controls.Add(this.MainTableLayoutPanel);
             this.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Location = new System.Drawing.Point(0, 0);
-            this.Name = "MedicosForm";
+            this.Name = "RecepcionForm";
             this.Palette = this.kryptonFormsStyle;
             this.PaletteMode = Krypton.Toolkit.PaletteMode.Custom;
             this.Text = "Welcome Username!";

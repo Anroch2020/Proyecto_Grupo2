@@ -6,10 +6,10 @@ using System.Windows.Forms;
 
 namespace Proyecto_Grupo2.Vistas
 {
-    public partial class MedicosForm : KryptonForm
+    public partial class RecepcionForm : KryptonForm
     {
         private UserControl _currentControl;
-        public MedicosForm()
+        public RecepcionForm()
         {
             InitializeComponent();
             btnCrearPaciente.PaletteMode = PaletteMode.Custom;
