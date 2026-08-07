@@ -22,30 +22,30 @@
 
         #region Component Designer generated code
 
-        /// <summary> 
-        /// Required method for Designer support - do not modify 
+        /// <summary>
+        /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ListarPacientesControl));
             this.kryptonTableLayoutPanel1 = new Krypton.Toolkit.KryptonTableLayoutPanel();
             this.kryptonTableLayoutPanel2 = new Krypton.Toolkit.KryptonTableLayoutPanel();
             this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
-            this.kryptonDataGridView1 = new Krypton.Toolkit.KryptonDataGridView();
+            this.listarPacientesDataGridView = new Krypton.Toolkit.KryptonDataGridView();
             this.kryptonTableLayoutPanel1.SuspendLayout();
             this.kryptonTableLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonDataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listarPacientesDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // kryptonTableLayoutPanel1
             // 
             this.kryptonTableLayoutPanel1.AutoSize = true;
             this.kryptonTableLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.kryptonTableLayoutPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.kryptonTableLayoutPanel1.ColumnCount = 1;
             this.kryptonTableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.kryptonTableLayoutPanel1.Controls.Add(this.kryptonTableLayoutPanel2, 0, 0);
-            this.kryptonTableLayoutPanel1.Controls.Add(this.kryptonDataGridView1, 0, 1);
+            this.kryptonTableLayoutPanel1.Controls.Add(this.listarPacientesDataGridView, 0, 1);
             this.kryptonTableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonTableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.kryptonTableLayoutPanel1.Name = "kryptonTableLayoutPanel1";
@@ -57,6 +57,7 @@
             // 
             // kryptonTableLayoutPanel2
             // 
+            this.kryptonTableLayoutPanel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.kryptonTableLayoutPanel2.ColumnCount = 3;
             this.kryptonTableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.kryptonTableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
@@ -82,17 +83,20 @@
             this.kryptonLabel1.TabIndex = 0;
             this.kryptonLabel1.Values.Text = "Listar Pacientes";
             // 
-            // kryptonDataGridView1
+            // listarPacientesDataGridView
             // 
-            this.kryptonDataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.kryptonDataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.kryptonDataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonDataGridView1.Location = new System.Drawing.Point(3, 77);
-            this.kryptonDataGridView1.Name = "kryptonDataGridView1";
-            this.kryptonDataGridView1.RowHeadersWidth = 51;
-            this.kryptonDataGridView1.RowTemplate.Height = 24;
-            this.kryptonDataGridView1.Size = new System.Drawing.Size(803, 415);
-            this.kryptonDataGridView1.TabIndex = 2;
+            this.listarPacientesDataGridView.AllowUserToAddRows = false;
+            this.listarPacientesDataGridView.AllowUserToDeleteRows = false;
+            this.listarPacientesDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listarPacientesDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.listarPacientesDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listarPacientesDataGridView.Location = new System.Drawing.Point(3, 77);
+            this.listarPacientesDataGridView.Name = "listarPacientesDataGridView";
+            this.listarPacientesDataGridView.ReadOnly = true;
+            this.listarPacientesDataGridView.RowHeadersWidth = 51;
+            this.listarPacientesDataGridView.RowTemplate.Height = 24;
+            this.listarPacientesDataGridView.Size = new System.Drawing.Size(803, 415);
+            this.listarPacientesDataGridView.TabIndex = 2;
             // 
             // ListarPacientesControl
             // 
@@ -101,19 +105,19 @@
             this.Controls.Add(this.kryptonTableLayoutPanel1);
             this.Name = "ListarPacientesControl";
             this.Size = new System.Drawing.Size(809, 495);
+            this.Load += new System.EventHandler(this.ListarPacientesControl_Load);
             this.kryptonTableLayoutPanel1.ResumeLayout(false);
             this.kryptonTableLayoutPanel2.ResumeLayout(false);
             this.kryptonTableLayoutPanel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonDataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listarPacientesDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion
         private Krypton.Toolkit.KryptonTableLayoutPanel kryptonTableLayoutPanel1;
         private Krypton.Toolkit.KryptonTableLayoutPanel kryptonTableLayoutPanel2;
         private Krypton.Toolkit.KryptonLabel kryptonLabel1;
-        private Krypton.Toolkit.KryptonDataGridView kryptonDataGridView1;
+        private Krypton.Toolkit.KryptonDataGridView listarPacientesDataGridView;
     }
 }

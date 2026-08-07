@@ -55,6 +55,7 @@ namespace Proyecto_Grupo2.Vistas
 
                 verificationForm.VerificationCompleted += ok =>
                 {
+                    AuthService.RegistrarResultadoHuella(usuario, ok);
                     if (ok)
                     {
                         BeginInvoke(new Action(() => OpenRole(usuario)));

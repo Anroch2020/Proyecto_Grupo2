@@ -27,7 +27,18 @@ namespace Proyecto_Grupo2.Clases
                 c.Open();
                 using (var x = q.ExecuteReader())
                 {
-                    if (!x.Read() || x["PlantillaHuella"] == DBNull.Value) return null;
+                    if (!x.Read())
+                    {
+                        RegistrarAcceso(null, "Huella", false, "Usuario inexistente o inactivo.");
+                        return null;
+                    }
+
+                    if (x["PlantillaHuella"] == DBNull.Value)
+                    {
+                        RegistrarAcceso((int)x["UsuarioID"], "Huella", false, "El usuario no tiene una huella registrada.");
+                        return null;
+                    }
+
                     return new AuthUser
                     {
                         Id = (int)x["UsuarioID"], Role = (string)x["NombreRol"], Template = (byte[])x["PlantillaHuella"]
@@ -87,9 +98,52 @@ namespace Proyecto_Grupo2.Clases
                 c.Open();
                 using (var x = q.ExecuteReader())
                 {
-                    if (!x.Read() || !Verify(p, (string)x["Contrasena"])) return null;
-                    return new AuthUser { Id = (int)x["UsuarioID"], Role = (string)x["NombreRol"] };
+                    if (!x.Read())
+                    {
+                        RegistrarAcceso(null, "Contrasena", false, "Usuario inexistente o inactivo.");
+                        return null;
+                    }
+
+                    var usuarioId = (int)x["UsuarioID"];
+                    if (!Verify(p, (string)x["Contrasena"]))
+                    {
+                        RegistrarAcceso(usuarioId, "Contrasena", false, "Contraseña incorrecta.");
+                        return null;
+                    }
+
+                    var usuario = new AuthUser { Id = usuarioId, Role = (string)x["NombreRol"] };
+                    RegistrarAcceso(usuario.Id, "Contrasena", true, "Inicio de sesión correcto.");
+                    return usuario;
                 }
+            }
+        }
+
+        public static void RegistrarResultadoHuella(AuthUser usuario, bool exitoso)
+        {
+            RegistrarAcceso(usuario == null ? (int?)null : usuario.Id, "Huella", exitoso,
+                exitoso ? "Inicio de sesión correcto." : "Huella no reconocida.");
+        }
+
+        private static void RegistrarAcceso(int? usuarioId, string tipoAcceso, bool exitoso, string observacion)
+        {
+            try
+            {
+                using (var c = new SqlConnection(Cs))
+                using (var q = new SqlCommand(
+                    "INSERT INTO BitacoraAccesos(UsuarioID,TipoAcceso,Resultado,Observacion) VALUES(@id,@tipo,@resultado,@observacion)", c))
+                {
+                    q.Parameters.Add("@id", SqlDbType.Int).Value = usuarioId.HasValue
+                        ? (object)usuarioId.Value : DBNull.Value;
+                    q.Parameters.Add("@tipo", SqlDbType.VarChar, 20).Value = tipoAcceso;
+                    q.Parameters.Add("@resultado", SqlDbType.VarChar, 20).Value = exitoso ? "Exitoso" : "Fallido";
+                    q.Parameters.Add("@observacion", SqlDbType.VarChar, 200).Value = observacion;
+                    c.Open();
+                    q.ExecuteNonQuery();
+                }
+            }
+            catch (Exception)
+            {
+                // An audit failure must not prevent a valid user from signing in.
             }
         }
 

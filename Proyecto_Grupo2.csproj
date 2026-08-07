@@ -53,6 +53,9 @@
   <ItemGroup>
     <Compile Include="Clases\KryptonGlobalTheme.cs" />
     <Compile Include="Clases\AuthService.cs" />
+    <Compile Include="Clases\ConnectionStringLoader.cs" />
+    <Compile Include="Clases\PacienteService.cs" />
+    <Compile Include="Modelos\Paciente.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

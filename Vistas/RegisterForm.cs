@@ -10,15 +10,15 @@ namespace Proyecto_Grupo2.Vistas
 {
     public partial class RegisterForm : KryptonForm
 {
-    private byte[] plantillaHuella;
+    private byte[] _plantillaHuella;
 
     public RegisterForm()
     {
         InitializeComponent();
-        LoadRoles();
+        loadRoles();
     }
 
-    private void LoadRoles()
+    private void loadRoles()
     {
         rolComboBox.DisplayMember = "NombreRol";
         rolComboBox.ValueMember = "RolID";
@@ -39,7 +39,7 @@ namespace Proyecto_Grupo2.Vistas
             using (var memoryStream = new MemoryStream())
             {
                 template.Serialize(memoryStream);
-                plantillaHuella = memoryStream.ToArray();
+                _plantillaHuella = memoryStream.ToArray();
             }
         };
 
@@ -72,7 +72,7 @@ namespace Proyecto_Grupo2.Vistas
                 nombreTextBox.Text.Trim(),
                 correoTextBox.Text.Trim(),
                 (int)rolComboBox.SelectedValue,
-                plantillaHuella
+                _plantillaHuella
             );
 
             MessageBox.Show("Usuario registrado.");
