@@ -1,178 +1,253 @@
+using Proyecto_Grupo2.Modelos;
 using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Security.Cryptography;
+using System.Collections.Generic;
 
 namespace Proyecto_Grupo2.Clases
 {
-    internal sealed class AuthUser
-    {
-        public int Id;
-        public string Role;
-        public byte[] Template;
-    }
-
     internal static class AuthService
     {
-        private static string Cs => ConnectionStringLoader.Get("DefaultConnection");
+        private const string FingerprintUserSql = @"
+            SELECT TOP 1 u.UsuarioID, u.PlantillaHuella, r.NombreRol
+            FROM Usuarios u
+            JOIN Roles r ON r.RolID = u.RolID
+            WHERE u.NombreUsuario = @Usuario AND u.Activo = 1;";
 
-        public static AuthUser FingerprintUser(string u)
+        private const string LoginSql = @"
+            SELECT u.UsuarioID, u.Contrasena, r.NombreRol
+            FROM Usuarios u
+            JOIN Roles r ON r.RolID = u.RolID
+            WHERE u.NombreUsuario = @Usuario AND u.Activo = 1;";
+
+        private const string RegisterSql = @"
+            INSERT INTO Usuarios
+                (NombreUsuario, Contrasena, NombreCompleto, Correo, RolID, PlantillaHuella)
+            OUTPUT INSERTED.UsuarioID
+            VALUES
+                (@Usuario, @Contrasena, @NombreCompleto, @Correo, @RolID, @PlantillaHuella);";
+
+        private const string FingerprintUsersSql = @"
+            SELECT u.UsuarioID, u.PlantillaHuella, r.NombreRol
+            FROM Usuarios u
+            JOIN Roles r ON r.RolID = u.RolID
+            WHERE u.Activo = 1 AND u.PlantillaHuella IS NOT NULL;";
+
+        public static List<AuthUser> FingerprintUsers()
         {
-            using (var c = new SqlConnection(Cs))
-            using (var q = new SqlCommand(
-                       "SELECT TOP 1 u.UsuarioID,u.PlantillaHuella,r.NombreRol FROM Usuarios u JOIN Roles r ON r.RolID=u.RolID WHERE u.NombreUsuario=@u AND u.Activo=1",
-                       c))
+            var users = new List<AuthUser>();
+
+            using (var connection = new SqlConnection(ConnectionStringLoader.Get("DefaultConnection")))
+            using (var command = new SqlCommand(FingerprintUsersSql, connection))
             {
-                q.Parameters.AddWithValue("@u", u);
-                c.Open();
-                using (var x = q.ExecuteReader())
+                connection.Open();
+                using (var reader = command.ExecuteReader())
                 {
-                    if (!x.Read())
+                    while (reader.Read())
                     {
-                        RegistrarAcceso(null, "Huella", false, "Usuario inexistente o inactivo.");
-                        return null;
+                        users.Add(new AuthUser
+                        {
+                            Id = (int)reader["UsuarioID"],
+                            Role = (string)reader["NombreRol"],
+                            Template = (byte[])reader["PlantillaHuella"]
+                        });
                     }
-
-                    if (x["PlantillaHuella"] == DBNull.Value)
-                    {
-                        RegistrarAcceso((int)x["UsuarioID"], "Huella", false, "El usuario no tiene una huella registrada.");
-                        return null;
-                    }
-
-                    return new AuthUser
-                    {
-                        Id = (int)x["UsuarioID"], Role = (string)x["NombreRol"], Template = (byte[])x["PlantillaHuella"]
-                    };
                 }
             }
+
+            return users;
+        }
+
+        public static AuthUser FingerprintUser(string username)
+        {
+            AuthUser user = null;
+            bool hasTemplate = false;
+
+            using (var connection = new SqlConnection(ConnectionStringLoader.Get("DefaultConnection")))
+            using (var command = new SqlCommand(FingerprintUserSql, connection))
+            {
+                command.Parameters.Add("@Usuario", SqlDbType.VarChar, 50).Value = username ?? string.Empty;
+                connection.Open();
+
+                using (var reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        user = new AuthUser
+                        {
+                            Id = (int)reader["UsuarioID"],
+                            Role = (string)reader["NombreRol"],
+                            Template = reader["PlantillaHuella"] == DBNull.Value
+                                ? null : (byte[])reader["PlantillaHuella"]
+                        };
+                        hasTemplate = user.Template != null;
+                    }
+                }
+            }
+
+            if (user == null)
+            {
+                RegistrarAcceso(null, "Huella", false, "Usuario inexistente o inactivo.");
+                return null;
+            }
+
+            if (!hasTemplate)
+            {
+                RegistrarAcceso(user.Id, "Huella", false, "El usuario no tiene una huella registrada.");
+                return null;
+            }
+
+            return user;
         }
 
         public static DataTable Roles()
         {
-            using (var c = new SqlConnection(Cs))
-            using (var a = new SqlDataAdapter("SELECT RolID,NombreRol FROM Roles ORDER BY NombreRol", c))
+            using (var connection = new SqlConnection(ConnectionStringLoader.Get("DefaultConnection")))
+            using (var adapter = new SqlDataAdapter(
+                "SELECT RolID, NombreRol FROM Roles ORDER BY NombreRol;", connection))
             {
-                var t = new DataTable();
-                a.Fill(t);
-                return t;
+                var roles = new DataTable();
+                adapter.Fill(roles);
+                return roles;
             }
         }
 
-        public static bool UserExists(string u)
+        public static bool UserExists(string username)
         {
-            using (var c = new SqlConnection(Cs))
-            using (var q = new SqlCommand("SELECT COUNT(*) FROM Usuarios WHERE NombreUsuario=@u", c))
+            using (var connection = new SqlConnection(ConnectionStringLoader.Get("DefaultConnection")))
+            using (var command = new SqlCommand(
+                "SELECT COUNT(*) FROM Usuarios WHERE NombreUsuario = @Usuario;", connection))
             {
-                q.Parameters.AddWithValue("@u", u);
-                c.Open();
-                return (int)q.ExecuteScalar() > 0;
+                command.Parameters.Add("@Usuario", SqlDbType.VarChar, 50).Value = username ?? string.Empty;
+                connection.Open();
+                return Convert.ToInt32(command.ExecuteScalar()) > 0;
             }
         }
 
-        public static int Register(string u, string p, string n, string e, int r, byte[] f)
+        public static int Register(string username, string password, string fullName, string email, int roleId,
+            byte[] fingerprintTemplate)
         {
-            using (var c = new SqlConnection(Cs))
-            using (var q = new SqlCommand(
-                       "INSERT INTO Usuarios(NombreUsuario,Contrasena,NombreCompleto,Correo,RolID,PlantillaHuella) OUTPUT INSERTED.UsuarioID VALUES(@u,@p,@n,@e,@r,@f)",
-                       c))
+            using (var connection = new SqlConnection(ConnectionStringLoader.Get("DefaultConnection")))
+            using (var command = new SqlCommand(RegisterSql, connection))
             {
-                q.Parameters.AddWithValue("@u", u);
-                q.Parameters.AddWithValue("@p", Hash(p));
-                q.Parameters.AddWithValue("@n", n);
-                q.Parameters.AddWithValue("@e", string.IsNullOrWhiteSpace(e) ? (object)DBNull.Value : e);
-                q.Parameters.AddWithValue("@r", r);
-                q.Parameters.Add("@f", SqlDbType.VarBinary, -1).Value = (object)f ?? DBNull.Value;
-                c.Open();
-                return (int)q.ExecuteScalar();
+                command.Parameters.Add("@Usuario", SqlDbType.VarChar, 50).Value = username;
+                command.Parameters.Add("@Contrasena", SqlDbType.VarChar, 300).Value = Hash(password);
+                command.Parameters.Add("@NombreCompleto", SqlDbType.VarChar, 150).Value = fullName;
+                command.Parameters.Add("@Correo", SqlDbType.VarChar, 100).Value = DbValue(email);
+                command.Parameters.Add("@RolID", SqlDbType.Int).Value = roleId;
+                command.Parameters.Add("@PlantillaHuella", SqlDbType.VarBinary, -1).Value =
+                    (object)fingerprintTemplate ?? DBNull.Value;
+
+                connection.Open();
+                return Convert.ToInt32(command.ExecuteScalar());
             }
         }
 
-        public static AuthUser Login(string u, string p)
+        public static AuthUser Login(string username, string password)
         {
-            using (var c = new SqlConnection(Cs))
-            using (var q = new SqlCommand(
-                       "SELECT u.UsuarioID,u.Contrasena,r.NombreRol FROM Usuarios u JOIN Roles r ON r.RolID=u.RolID WHERE u.NombreUsuario=@u AND u.Activo=1",
-                       c))
+            AuthUser user = null;
+            string storedPassword = null;
+
+            using (var connection = new SqlConnection(ConnectionStringLoader.Get("DefaultConnection")))
+            using (var command = new SqlCommand(LoginSql, connection))
             {
-                q.Parameters.AddWithValue("@u", u);
-                c.Open();
-                using (var x = q.ExecuteReader())
+                command.Parameters.Add("@Usuario", SqlDbType.VarChar, 50).Value = username ?? string.Empty;
+                connection.Open();
+
+                using (var reader = command.ExecuteReader())
                 {
-                    if (!x.Read())
+                    if (reader.Read())
                     {
-                        RegistrarAcceso(null, "Contrasena", false, "Usuario inexistente o inactivo.");
-                        return null;
+                        user = new AuthUser
+                        {
+                            Id = (int)reader["UsuarioID"],
+                            Role = (string)reader["NombreRol"]
+                        };
+                        storedPassword = (string)reader["Contrasena"];
                     }
-
-                    var usuarioId = (int)x["UsuarioID"];
-                    if (!Verify(p, (string)x["Contrasena"]))
-                    {
-                        RegistrarAcceso(usuarioId, "Contrasena", false, "Contraseña incorrecta.");
-                        return null;
-                    }
-
-                    var usuario = new AuthUser { Id = usuarioId, Role = (string)x["NombreRol"] };
-                    RegistrarAcceso(usuario.Id, "Contrasena", true, "Inicio de sesión correcto.");
-                    return usuario;
                 }
             }
+
+            if (user == null)
+            {
+                RegistrarAcceso(null, "Contrasena", false, "Usuario inexistente o inactivo.");
+                return null;
+            }
+
+            if (!Verify(password, storedPassword))
+            {
+                RegistrarAcceso(user.Id, "Contrasena", false, "Contraseña incorrecta.");
+                return null;
+            }
+
+            RegistrarAcceso(user.Id, "Contrasena", true, "Inicio de sesión correcto.");
+            return user;
         }
 
-        public static void RegistrarResultadoHuella(AuthUser usuario, bool exitoso)
+        public static void RegistrarResultadoHuella(AuthUser user, bool successful)
         {
-            RegistrarAcceso(usuario == null ? (int?)null : usuario.Id, "Huella", exitoso,
-                exitoso ? "Inicio de sesión correcto." : "Huella no reconocida.");
+            RegistrarAcceso(user == null ? (int?)null : user.Id, "Huella", successful,
+                successful ? "Inicio de sesión correcto." : "Huella no reconocida.");
         }
 
-        private static void RegistrarAcceso(int? usuarioId, string tipoAcceso, bool exitoso, string observacion)
+        private static void RegistrarAcceso(int? userId, string accessType, bool successful, string observation)
         {
             try
             {
-                using (var c = new SqlConnection(Cs))
-                using (var q = new SqlCommand(
-                    "INSERT INTO BitacoraAccesos(UsuarioID,TipoAcceso,Resultado,Observacion) VALUES(@id,@tipo,@resultado,@observacion)", c))
+                using (var connection = new SqlConnection(ConnectionStringLoader.Get("DefaultConnection")))
+                using (var command = new SqlCommand(
+                    "INSERT INTO BitacoraAccesos (UsuarioID, TipoAcceso, Resultado, Observacion) " +
+                    "VALUES (@UsuarioID, @TipoAcceso, @Resultado, @Observacion);", connection))
                 {
-                    q.Parameters.Add("@id", SqlDbType.Int).Value = usuarioId.HasValue
-                        ? (object)usuarioId.Value : DBNull.Value;
-                    q.Parameters.Add("@tipo", SqlDbType.VarChar, 20).Value = tipoAcceso;
-                    q.Parameters.Add("@resultado", SqlDbType.VarChar, 20).Value = exitoso ? "Exitoso" : "Fallido";
-                    q.Parameters.Add("@observacion", SqlDbType.VarChar, 200).Value = observacion;
-                    c.Open();
-                    q.ExecuteNonQuery();
+                    command.Parameters.Add("@UsuarioID", SqlDbType.Int).Value = userId.HasValue
+                        ? (object)userId.Value : DBNull.Value;
+                    command.Parameters.Add("@TipoAcceso", SqlDbType.VarChar, 20).Value = accessType;
+                    command.Parameters.Add("@Resultado", SqlDbType.VarChar, 20).Value =
+                        successful ? "Exitoso" : "Fallido";
+                    command.Parameters.Add("@Observacion", SqlDbType.VarChar, 200).Value = observation;
+                    connection.Open();
+                    command.ExecuteNonQuery();
                 }
             }
             catch (Exception)
             {
-                // An audit failure must not prevent a valid user from signing in.
+                // Audit logging must not prevent a valid authentication.
             }
         }
 
-        private static string Hash(string s)
+        private static object DbValue(string value)
+        {
+            return string.IsNullOrWhiteSpace(value) ? (object)DBNull.Value : value;
+        }
+
+        private static string Hash(string value)
         {
             var salt = new byte[16];
-            using (var r = RandomNumberGenerator.Create())
-            {
-                r.GetBytes(salt);
-            }
+            using (var random = RandomNumberGenerator.Create())
+                random.GetBytes(salt);
 
-            using (var k = new Rfc2898DeriveBytes(s, salt, 100000))
-            {
-                return "PBKDF2$" + Convert.ToBase64String(salt) + "$" + Convert.ToBase64String(k.GetBytes(32));
-            }
+            using (var derivedKey = new Rfc2898DeriveBytes(value, salt, 100000))
+                return "PBKDF2$" + Convert.ToBase64String(salt) + "$" +
+                    Convert.ToBase64String(derivedKey.GetBytes(32));
         }
 
-        private static bool Verify(string s, string h)
+        private static bool Verify(string value, string storedHash)
         {
-            var p = h.Split('$');
-            if (p.Length != 3) return h == s;
-            using (var k = new Rfc2898DeriveBytes(s, Convert.FromBase64String(p[1]), 100000))
+            var parts = storedHash.Split('$');
+            if (parts.Length != 3)
+                return storedHash == value;
+
+            using (var derivedKey = new Rfc2898DeriveBytes(value, Convert.FromBase64String(parts[1]), 100000))
             {
-                var a = k.GetBytes(32);
-                var b = Convert.FromBase64String(p[2]);
-                if (a.Length != b.Length) return false;
-                var ok = true;
-                for (var i = 0; i < a.Length; i++) ok &= a[i] == b[i];
-                return ok;
+                var expected = derivedKey.GetBytes(32);
+                var actual = Convert.FromBase64String(parts[2]);
+                if (expected.Length != actual.Length) return false;
+
+                var valid = true;
+                for (var i = 0; i < expected.Length; i++)
+                    valid &= expected[i] == actual[i];
+                return valid;
             }
         }
     }

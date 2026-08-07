@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
+using Proyecto_Grupo2.Modelos;
 
 namespace Enrollment
 {
@@ -14,10 +16,17 @@ namespace Enrollment
 	public class VerificationForm : CaptureForm
 	{
 		public event Action<bool> VerificationCompleted;
+		public event Action<AuthUser, bool> IdentificationCompleted;
 
 		public void Verify(DPFP.Template template)
 		{
 			Template = template;
+			ShowDialog();
+		}
+
+		public void Identify(IEnumerable<AuthUser> users)
+		{
+			Candidates = users == null ? new List<AuthUser>() : users.ToList();
 			ShowDialog();
 		}
 
@@ -40,14 +49,34 @@ namespace Enrollment
 			// TODO: move to a separate task
 			if (features != null)
 			{
-				// Compare the feature set with our template
-				DPFP.Verification.Verification.Result result = new DPFP.Verification.Verification.Result();
-				Verificator.Verify(features, Template, ref result);
-				UpdateStatus(result.FARAchieved);
-				if (result.Verified)
-				{ MakeReport("The fingerprint was VERIFIED."); BeginInvoke(new Action(() => { VerificationCompleted?.Invoke(true); Close(); })); }
+				if (Candidates == null)
+				{
+					DPFP.Verification.Verification.Result result = new DPFP.Verification.Verification.Result();
+					Verificator.Verify(features, Template, ref result);
+					UpdateStatus(result.FARAchieved);
+					if (result.Verified)
+					{ MakeReport("The fingerprint was VERIFIED."); BeginInvoke(new Action(() => { VerificationCompleted?.Invoke(true); Close(); })); }
+					else MakeReport("The fingerprint was NOT VERIFIED.");
+				}
 				else
-					MakeReport("The fingerprint was NOT VERIFIED.");
+				{
+					AuthUser matched = null;
+					foreach (var candidate in Candidates)
+					{
+						try
+						{
+							var candidateTemplate = new DPFP.Template(new System.IO.MemoryStream(candidate.Template));
+							var result = new DPFP.Verification.Verification.Result();
+							Verificator.Verify(features, candidateTemplate, ref result);
+							UpdateStatus(result.FARAchieved);
+							if (result.Verified) { matched = candidate; break; }
+						}
+						catch (Exception) { }
+					}
+					if (matched != null) MakeReport("The fingerprint was VERIFIED.");
+					else MakeReport("The fingerprint was NOT VERIFIED.");
+					BeginInvoke(new Action(() => { IdentificationCompleted?.Invoke(matched, matched != null); Close(); }));
+				}
 			}
 		}
 
@@ -59,6 +88,7 @@ namespace Enrollment
 
 		private DPFP.Template Template;
 		private DPFP.Verification.Verification Verificator;
+		private List<AuthUser> Candidates;
 
 	}
 }
